@@ -1,0 +1,22 @@
+{
+  "name": "rabbitmq-retry-mechanism-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalayueh/rabbitmq-retry-mechanism-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lalayueh/rabbitmq-retry-mechanism-example/issues"
+  },
+  "homepage": "https://github.com/lalayueh/rabbitmq-retry-mechanism-example#readme",
+  "dependencies": {
+    "amqplib": "^0.5.2",
+    "lodash": "^4.17.4"
+  }
+}
