@@ -5,6 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lalayueh/rabbitmq-retry-mechanism-example.git"
@@ -20,6 +23,7 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "eslint": "^4.11.0"
+    "eslint": "^4.11.0",
+    "eslint-plugin-node": "^5.2.1"
   }
 }

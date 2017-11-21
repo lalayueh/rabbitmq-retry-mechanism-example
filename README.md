@@ -2,6 +2,9 @@
 
 ## How to run the example?
 
+### 0. Check your node is greater than 6.0
+    node -v
+
 ### 1. Using Docker to launch RabbitMQ
     docker-compose up
 

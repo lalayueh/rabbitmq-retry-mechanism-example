@@ -1,12 +1,12 @@
-
 module.exports = {
   work: {
-    exchange: 'work_exchange',
-    queue: 'work_queue',
+    exchange: 'rabbitmq_retry_example_work_exchange',
+    queue: 'rabbitmq_retry_example_work_queue',
+    key: 'rabbitmq_retry_example_routing_key',
   },
   wait: {
-    exchange: 'wait_exchange',
-    queue: 'wait_queue',
+    exchange: 'rabbitmq_retry_example_wait_exchange',
+    queue: (delaySeconds) => `rabbitmq_retry_example_wait_queue@${delaySeconds}`,
+    key: (delaySeconds) => `rabbitmq_retry_example_routing_key@${delaySeconds}`,
   },
-  key: 'routing_key',
 };
