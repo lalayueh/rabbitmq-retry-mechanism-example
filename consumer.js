@@ -10,9 +10,7 @@ function handleMessage({ channel, message }) {
     console.log(`receive message: ${message.content}`);
     if (halfChanceToPass()) {
       channel.ack(message);
-      // throw new Error('Do something error');
     } else {
-      // channel.ack(message);
       throw new Error('Do something error');
     }
   })

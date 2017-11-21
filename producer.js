@@ -14,7 +14,6 @@ amqp.connect()
   .then(() => channel.assertQueue(work.queue))
   .then(() => channel.bindQueue(work.queue, work.exchange, work.key))
   .then(() => {
-
     // publish a message every 1 second
     setInterval(() => {
       const message = Buffer.from(JSON.stringify({ id: Date.now() }));
