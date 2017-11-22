@@ -25,7 +25,6 @@ function handleMessage({ channel, message }) {
     console.error(`Encountering the error, id: ${id}, retry: ${retryCount}`);
     // create delay retry queue
     return channel.assertQueue(waitQueue, {
-      deadLetterExchange: work.exchange,
       arguments: {
         'x-dead-letter-exchange': work.exchange,
         'x-dead-letter-routing-key': work.key,
