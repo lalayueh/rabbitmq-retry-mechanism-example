@@ -1,6 +1,6 @@
 const amqp = require('amqplib');
 const _ = require('lodash');
-const { work, wait } = require('./constants.js');
+const { work, wait, maxRetryCount } = require('./constants.js');
 const { halfChanceToPass, getRandomizedBackoffSeconds } = require('./utils.js');
 
 function handleMessage({ channel, message }) {
@@ -17,12 +17,16 @@ function handleMessage({ channel, message }) {
   // error handling
   .catch(() => {
     const retryCount = _.at(message, 'properties.headers["x-retry-count"]')[0] || 0;
+    const id = JSON.parse(message.content).id;
+    if (retryCount > maxRetryCount) {
+      console.log(`Max retries exceeded, id: ${id}`);
+      return channel.ack(message);
+    }
+
     const delaySeconds = getRandomizedBackoffSeconds(retryCount);
     const waitQueue = wait.queue(delaySeconds);
     const waitKey = wait.key(delaySeconds);
-    const id = JSON.parse(message.content).id;
-
-    console.error(`Encountering the error, id: ${id}, retry: ${retryCount}`);
+    console.log(`Encountering the error, id: ${id}, retry: ${retryCount}, delay: ${delaySeconds}`);
     // create delay retry queue
     return channel.assertQueue(waitQueue, {
       arguments: {

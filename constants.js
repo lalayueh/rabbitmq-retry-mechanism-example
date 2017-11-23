@@ -9,4 +9,5 @@ module.exports = {
     queue: (delaySeconds) => `rabbitmq_retry_example_wait_queue@${delaySeconds}`,
     key: (delaySeconds) => `rabbitmq_retry_example_routing_key@${delaySeconds}`,
   },
+  maxRetryCount: 10,
 };

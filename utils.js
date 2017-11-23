@@ -1,5 +1,5 @@
 function getRandomizedBackoffSeconds(retryCount) {
-  const base = 2 << (retryCount + 1);
+  const base = 1 << retryCount;
 
   return Math.floor(Math.random() * base) + 1;
 }
